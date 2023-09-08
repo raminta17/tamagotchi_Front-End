@@ -1,38 +1,158 @@
-.App {
-  text-align: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #f3ebfa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+}
+.container {
+    width: 80vw;
+    margin: auto;
+    background-color: #5d0294;
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: center;
+}
+.chooseAnimal {
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.chooseAnimal img {
+    width: 20%;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.chooseAnimal img:hover {
+    transform: scale(1.1);
+}
+.game {
+    display:flex;
+    height: 80vh;
+    gap:20px;
+}
+.leftSide {
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.imgDiv {
+    flex:5;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide any content that overflows the container */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.imgDiv img {
+    width: 100%; /* Ensure the image takes up the available width */
+    height: 100%; /* Ensure the image takes up the available height */
+    object-fit: contain; /* or "cover" depending on your preference */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.hungerBarCont {
+    border-radius: 10px;
+    background-color: #8c8b8b;
+    height: 100%;
+    width: 100%;
 }
-
-.App-link {
-  color: #61dafb;
+.hungerBar {
+    height: 100%;
+    background-color: lightgreen;
+    border-radius: inherit;
+    display: flex;
+    padding: 10px;
+    align-items: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.rightSide {
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.eggsContainer {
+    background-color: #caaade;
+    border-radius: 10px;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap:10px;
+    overflow: auto;
+}
+.egg {
+    padding: 10px;
+    border-radius: inherit;
+    background-color: #5d0294;
+    width: 100px;
+    height: 150px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    transition: 0.3s ease-in-out;
+}
+.egg img {
+    width: 50px;
+    height: 100%;
+    object-fit: contain;
+}
+.egg:hover {
+    background-color: #420369;
+}
+.egg:hover button {
+    background-color: #ffff4d;
+    color: #420369;
+}
+button {
+    background-color: #caaade;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    flex:1;
+    transition: 0.3s ease-in-out;
+}
+button:hover {
+    color: white;
+    background-color: #420369;
+}
+.f5 {
+    flex:5
+}
+.f1 {
+    flex:1;
+}
+.gameOver {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    padding: 20%;
+}
+.gameOver button {
+    padding: 20px;
+    transition: 0.3s ease-in-out;
+    font-weight: bold;
+    color: #420369;
+}
+.gameOver button:hover {
+    color: white;
 }
