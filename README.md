@@ -1,1 +1,1 @@
-![MicrosoftTeams-image (1).png](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2FMicrosoftTeams-image%20%281%29.png)
+![image](https://github.com/raminta17/tamagotchi_Front-End/assets/62699647/8885ca4a-175c-4d19-972b-aff076dc400e)
