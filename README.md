@@ -1,1 +1,0 @@
-![MicrosoftTeams-image (1).png](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2FMicrosoftTeams-image%20%281%29.png)

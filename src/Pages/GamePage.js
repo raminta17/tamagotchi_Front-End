@@ -1,59 +1,59 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {updateEggs, updateHunger, updateMoney, updatePet} from "../features/pet";
+import {updateMessage, updatePetInfo} from "../features/pet";
 import {useNavigate} from "react-router-dom";
 import SingleEgg from "../components/SingleEgg";
+import HungerBar from "../components/HungerBar";
 
 const GamePage = () => {
     const dispatch = useDispatch();
-    const pet = useSelector(state => state.pet);
+    const pet = useSelector(state => state.pet.petInfo);
     const nav = useNavigate();
 
     useEffect(() => {
-       const interval =  setInterval(() => {
+        const interval = setInterval(() => {
             fetch('http://localhost:8000/getPetData')
                 .then(res => res.json()).then(data => {
                 console.log(data)
-                dispatch(updateHunger(data.petInfo.hunger))
-                dispatch(updateMoney(data.petInfo.money));
-                dispatch(updateEggs(data.petInfo.eggs));
-                dispatch(updatePet(data.petInfo.petSelected))
-                if(data.gameover){
+                dispatch(updatePetInfo(data.petInfo))
+                dispatch(updateMessage(data.message));
+                if (data.gameover) {
                     nav("/gameover")
                 }
             })
         }, 1000);
-       return () => clearInterval(interval);
+        return () => clearInterval(interval);
 
     }, []);
-
 
 
     function feedPet() {
         fetch('http://localhost:8000/feed')
             .then(res => res.json()).then(data => {
             console.log(data)
-            dispatch(updateMoney(data.petInfo.money));
-            dispatch(updateHunger(data.petInfo.hunger));
+            dispatch(updatePetInfo(data.petInfo));
+            dispatch(updateMessage(data.message));
         })
     }
 
     return (
         <>
-            {pet.pet && <div className="container game">
+            {pet && <div className="container game">
                 <div className="leftSide">
+                    <div className="petLevelCont">
+                        <h3>Level: {pet.level}</h3>
+                        <h3>XP: {pet.xp}</h3>
+                    </div>
                     <div className=" imgDiv">
-                        <img src={pet.pet.petImage} alt=""/>
+                        <img src={pet.petSelected.petImage} alt=""/>
                     </div>
 
-                    <div className="hungerBarCont f1">
-                        <div className="hungerBar" style={{width: pet.hunger + '%'}}><h2>{pet.hunger}%</h2></div>
-                    </div>
+                    <HungerBar pet={pet}/>
                 </div>
                 <div className="rightSide">
                     <div className="eggsContainer f5">
                         {pet.eggs.map((egg, index) => (
-                           <SingleEgg key={index} index={index} egg={egg}/>
+                            <SingleEgg key={index} index={index} egg={egg}/>
                         ))}
                     </div>
                     <h2>YOUR MONEY: {pet.money}</h2>

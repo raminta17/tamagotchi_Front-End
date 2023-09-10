@@ -79,6 +79,7 @@ body{
     display: flex;
     padding: 10px;
     align-items: center;
+    transition: 0.3s linear;
 }
 .rightSide {
     flex:1;
@@ -155,4 +156,9 @@ button:hover {
 }
 .gameOver button:hover {
     color: white;
+}
+.petLevelCont {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }

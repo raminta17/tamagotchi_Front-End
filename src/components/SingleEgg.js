@@ -1,5 +1,5 @@
 import React from 'react';
-import {updateEggs, updateMoney} from "../features/pet";
+import {updatePetInfo} from "../features/pet";
 import {useDispatch} from "react-redux";
 
 const SingleEgg = ({egg, index}) => {
@@ -9,8 +9,7 @@ const SingleEgg = ({egg, index}) => {
     function sellEgg() {
         fetch('http://localhost:8000/sellEgg/'+ index)
             .then(res => res.json()).then(data => {
-            dispatch(updateMoney(data.petInfo.money));
-            dispatch(updateEggs(data.petInfo.eggs));
+            dispatch(updatePetInfo(data.petInfo));
         })
     }
     return (
