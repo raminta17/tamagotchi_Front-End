@@ -10,7 +10,6 @@ const StartGame = () => {
     useEffect(() => {
         fetch('http://localhost:8000/sendAnimalSelection')
             .then(res => res.json()).then(data => {
-            console.log(data);
             setAnimals(data)
         })
     }, []);
@@ -32,7 +31,7 @@ const StartGame = () => {
         <div className="container">
             <h1>CHOOSE YOUR PET</h1>
             <div className="chooseAnimal">
-                {animals.map((animal, index) => <img onClick={() =>startGame(animal.petName)} key={index} src={animal.petImages.level1} alt=""/>)}
+                {animals.map((animal, index) => <img onClick={() =>startGame(animal.petName)} key={index} src={animal.petImages[0]} alt=""/>)}
             </div>
         </div>
     );

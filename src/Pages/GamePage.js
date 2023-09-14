@@ -14,7 +14,6 @@ const GamePage = () => {
         const interval = setInterval(() => {
             fetch('http://localhost:8000/getPetData')
                 .then(res => res.json()).then(data => {
-                console.log(data)
                 dispatch(updatePetInfo(data.petInfo))
                 dispatch(updateMessage(data.message));
                 if (data.gameover) {
@@ -30,7 +29,6 @@ const GamePage = () => {
     function feedPet() {
         fetch('http://localhost:8000/feed')
             .then(res => res.json()).then(data => {
-            console.log(data)
             dispatch(updatePetInfo(data.petInfo));
             dispatch(updateMessage(data.message));
         })
@@ -57,7 +55,7 @@ const GamePage = () => {
                         ))}
                     </div>
                     <h2>YOUR MONEY: {pet.money}</h2>
-                    <button onClick={feedPet}><h3>Feed your pet ($10)</h3></button>
+                    <button onClick={feedPet}><h3>Feed your pet (${pet.foodPrice})</h3></button>
                 </div>
 
             </div>}
